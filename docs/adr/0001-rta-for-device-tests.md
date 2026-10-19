@@ -1,0 +1,3 @@
+# Device tests use roku-test-automation, not Roku's WebDriver
+
+Device tests drive a real Roku through RokuCommunity's roku-test-automation (RTA), pinned to 2.2.2, rather than Roku's first-party WebDriver and Robot Framework library or Appium's Roku driver. The checks we need are about app state: which node has focus, a component's own fields, and the Video node's state. RTA reads any field on any node and can wait on field changes. WebDriver and Appium only see the on-screen tree that ECP reports. Roku's WebDriver has also been dormant since 2022, pinned to 2019 dependencies. RTA's on-device component is added only by `bsconfig.test.json`, and a check keeps it out of release builds.
